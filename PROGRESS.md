@@ -17,17 +17,33 @@
 
 ---
 
-## ⏳ ЭТАП 2: Backend Setup & Database (Next)
+## 🟡 ЭТАП 2: Backend Setup & Database
 
-### Tasks
-- [ ] Node.js project init (package.json)
-- [ ] TypeScript config
-- [ ] Express/Fastify setup
-- [ ] PostgreSQL migrations (8 tables)
-- [ ] REST API endpoints
+### Completed ✅
+- [x] Node.js project init (package.json)
+- [x] TypeScript config (tsconfig.json)
+- [x] Express.js setup with middleware (helmet, CORS)
+- [x] PostgreSQL migrations (8 core tables + catalog)
+- [x] Database configuration (pool, transactions)
+- [x] TypeScript types for all entities (based on DATA_DICTIONARY)
+- [x] Basic Express server structure
+- [x] Route skeleton (auth, clients, orders, catalog, admin)
+
+### In Progress ⏳
+- [ ] REST API endpoints implementation
+- [ ] Authentication middleware (JWT)
+- [ ] Order management logic
+- [ ] Saga orchestration handlers
+
+### Tasks Remaining
+- [ ] Implement all API endpoints
+- [ ] Add business logic controllers
+- [ ] Saga pattern implementation
+- [ ] Idempotency handling
+- [ ] Error handling & validation
 
 ### Status
-🔴 **ОЖИДАНИЕ СТАРТА**
+🟡 **IN PROGRESS** (50% complete)
 
 ---
 

@@ -31,11 +31,17 @@ app.get('/health', (_req, res) => {
 });
 
 // ============= API V1 ROUTES =============
-app.use(`${API_PREFIX}/auth`, require('./routes/auth'));
-app.use(`${API_PREFIX}/clients`, require('./routes/clients'));
-app.use(`${API_PREFIX}/orders`, require('./routes/orders'));
-app.use(`${API_PREFIX}/catalog`, require('./routes/catalog'));
-app.use(`${API_PREFIX}/admin`, require('./routes/admin'));
+const authRoutes = require('./routes/auth');
+const ordersRoutes = require('./routes/orders');
+const catalogRoutes = require('./routes/catalog');
+const clientsRoutes = require('./routes/clients');
+const adminRoutes = require('./routes/admin');
+
+app.use(`${API_PREFIX}/auth`, authRoutes);
+app.use(`${API_PREFIX}/orders`, ordersRoutes);
+app.use(`${API_PREFIX}/catalog`, catalogRoutes);
+app.use(`${API_PREFIX}/clients`, clientsRoutes);
+app.use(`${API_PREFIX}/admin`, adminRoutes);
 
 // ============= 404 HANDLER =============
 app.use((_req, res) => {
