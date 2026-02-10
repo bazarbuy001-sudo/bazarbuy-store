@@ -1,0 +1,38 @@
+{
+  "name": "bazar-buy-backend",
+  "version": "1.0.0",
+  "description": "Bazar Buy B2B E-commerce Backend",
+  "main": "dist/server.js",
+  "scripts": {
+    "dev": "ts-node src/server.ts",
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "db:migrate": "psql -U postgres -d bazarbuy_db -f migrations/*.sql",
+    "test": "jest",
+    "lint": "eslint src --ext .ts"
+  },
+  "keywords": ["b2b", "ecommerce", "bazar-buy"],
+  "author": "Capti",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "typescript": "^5.3.3",
+    "pg": "^8.11.3",
+    "uuid": "^9.0.1",
+    "jsonwebtoken": "^9.1.2",
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^16.3.1",
+    "cors": "^2.8.5",
+    "helmet": "^7.1.0",
+    "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.10.6",
+    "@types/pg": "^8.11.2",
+    "ts-node": "^10.9.2",
+    "@typescript-eslint/eslint-plugin": "^6.17.0",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.1.1"
+  }
+}
