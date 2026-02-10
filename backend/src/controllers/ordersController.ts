@@ -209,10 +209,10 @@ export const updateOrderStatus = async (req: any, res: Response) => {
       });
     }
 
-    const currentStatus = currentResult.rows[0].status;
+    const currentStatus = currentResult.rows[0].status as OrderStatus;
 
     // Validate transition (BR-ORDER-002)
-    if (!ALLOWED_TRANSITIONS[currentStatus].includes(status)) {
+    if (!ALLOWED_TRANSITIONS[currentStatus]?.includes(status as OrderStatus)) {
       return res.status(400).json({
         status: 'error',
         error: {

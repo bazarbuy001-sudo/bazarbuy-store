@@ -1,77 +1,120 @@
 # Bazar Buy — B2B E-commerce Platform
 
-**E-commerce платформа для продажи тканей и фурнитуры (Россия, Bishkek)**
+🚀 Полнофункциональная B2B платформа для оптовой торговли тканями и фурнитурой.
 
-## 🚀 Статус
-🔴 В разработке (2-3 недели)
-
-## 📋 Технологический стек
-
-**Backend:**
-- Node.js + Express/Fastify
-- TypeScript
-- PostgreSQL
-- JWT Authentication
-- Saga Pattern для заказов
-
-**Frontend:**
-- React + TypeScript
-- Tailwind CSS
-- React Router
-- i18n (Русский язык)
-
-**Infrastructure:**
-- Vercel (Frontend)
-- Render (Backend)
-- GitHub Actions (CI/CD)
-- PostgreSQL (Database)
-
-## 📂 Структура проекта
+## Структура проекта
 
 ```
-bazarbuy-store/
-├── backend/           # Node.js backend
-├── frontend/          # React frontend
-├── docs/              # Документация
-├── .github/
-│   └── workflows/     # CI/CD
-├── BAZAR_BUY_PLAN.md  # Полный план разработки
-└── PROGRESS.md        # Прогресс разработки
+bazar-buy/
+├── backend/          # Express.js + TypeScript + PostgreSQL
+│   ├── src/
+│   │   ├── controllers/
+│   │   ├── routes/
+│   │   ├── middleware/
+│   │   ├── config/
+│   │   ├── types/
+│   │   └── server.ts
+│   ├── migrations/   # PostgreSQL миграции
+│   ├── package.json
+│   └── tsconfig.json
+│
+├── frontend/         # React + TypeScript + Tailwind CSS + Vite
+│   ├── src/
+│   │   ├── pages/
+│   │   ├── layouts/
+│   │   ├── components/
+│   │   ├── App.tsx
+│   │   └── main.tsx
+│   ├── index.html
+│   ├── package.json
+│   ├── vite.config.ts
+│   └── tailwind.config.js
+│
+├── docs/             # Документация
+├── migrate.sh        # Script для миграций БД
+└── README.md
 ```
 
-## 🎯 Функциональность
+## Требования
 
-- **Каталог товаров:** поиск, фильтрация, сортировка
-- **Корзина:** добавить, удалить, обновить количество
-- **Оформление заказа:** валидация адреса, контактов
-- **Личный кабинет:** профиль, история заказов
-- **Админ панель:** управление товарами, заказами, клиентами
-- **B2B модель:** работа с корпоративными клиентами
+- Node.js >= 18.0.0
+- PostgreSQL >= 14.0
+- npm >= 9.0.0
 
-## 📝 План разработки
+## Быстрый старт
 
-Полный план в файле [BAZAR_BUY_PLAN.md](./BAZAR_BUY_PLAN.md)
+### 1. Backend
 
-**Этапы:**
-1. ✅ Подготовка (репо, структура)
-2. ⏳ Backend API + Database
-3. ⏳ Frontend React
-4. ⏳ Интеграция & тестирование
-5. ⏳ CI/CD & Deployment
-6. ⏳ Domain & DNS
-7. ⏳ Production checks
+```bash
+cd backend
+npm install
+npm run build
+npm run dev
+```
 
-## 🔗 Ссылки
+Backend запустится на `http://localhost:3001`
 
-- **Repository:** https://github.com/bazarbuy001-sudo/bazarbuy-store
-- **Progress:** See PROGRESS.md
-- **Issues:** GitHub Issues
+### 2. Database
 
-## 📧 Контакт
+```bash
+# Убедитесь, что PostgreSQL запущен и создайте БД:
+createdb bazarbuy_db
 
-Разработка: Capti (AI Assistant)
-Заказчик: Жандар (@bazarbuy001-sudo)
+# Запустите миграции:
+./migrate.sh
+```
 
----
+### 3. Frontend
 
-**Последнее обновление:** 2026-02-10
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+Frontend запустится на `http://localhost:3000`
+
+## API Endpoints
+
+### Authentication
+- `POST /api/v1/auth/login` — Вход (email/password)
+- `POST /api/v1/auth/logout` — Выход
+- `GET /api/v1/auth/me` — Текущий пользователь
+
+### Catalog
+- `GET /api/v1/catalog/categories` — Список категорий
+- `GET /api/v1/catalog/products` — Список товаров
+- `GET /api/v1/catalog/search` — Поиск товаров
+
+### Orders
+- `POST /api/v1/orders` — Создать заказ
+- `GET /api/v1/orders/:public_id` — Получить заказ
+
+## Развертывание
+
+- **Frontend:** Vercel
+- **Backend:** Render или Heroku
+- **Database:** PostgreSQL (Render, AWS RDS)
+
+## Разработка
+
+### Stack
+- **Backend:** Express.js, TypeScript, PostgreSQL, JWT
+- **Frontend:** React 18, TypeScript, Tailwind CSS, Vite
+- **Architecture:** B2B model (clients + admin_users), Saga pattern
+
+### Тестирование
+
+```bash
+# Backend тесты
+cd backend
+npm test
+
+# Frontend тесты
+cd frontend
+npm test
+```
+
+## Лицензия
+
+MIT
